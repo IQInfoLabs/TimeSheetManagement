@@ -1,3 +1,5 @@
+use master 
+go
 drop database TimeSheetManagement
 go
 
