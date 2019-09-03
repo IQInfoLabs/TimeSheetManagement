@@ -35,10 +35,16 @@ namespace TimeSheetManagamentService
                     {
 
                         var dataValues = data.Split(',');
-
+                        var firstName = dataValues[0];
                         //Employee_Details
+                        int empId = 0;
+                        if (dbContext.Employee_Details.Any())
+                        {
+                            empId = dbContext.Employee_Details.Where(emp => emp.First_Name == firstName).OrderByDescending(e => e.Employee_Id).FirstOrDefault().Employee_Id;
+                        }
+                        empId = empId + 1;
                         Employee_Details employee_Details = new Employee_Details();
-                        employee_Details.Employee_Id = dbContext.Employee_Details.Where(emp => emp.First_Name == dataValues[0]).FirstOrDefault().Employee_Id == 0 ? 1 : dbContext.Employee_Details.Where(emp => emp.First_Name == dataValues[0]).FirstOrDefault().Employee_Id + 1;
+                        employee_Details.Employee_Id = empId;
                         employee_Details.First_Name = dataValues[0];
                         employee_Details.Last_Name = dataValues[1];
                         employee_Details.Designation = dataValues[2];
@@ -54,10 +60,8 @@ namespace TimeSheetManagamentService
 
                         // Address
                         Address address = new Address();
-                        var firstName = dataValues[0];
-                        int employeeId = dbContext.Employee_Details.Where(emp => emp.First_Name == firstName).FirstOrDefault().Employee_Id;
-                        address.Address_Id = employeeId;
-                        address.Employee_Id = employeeId;
+                        address.Address_Id = empId;
+                        address.Employee_Id = empId;
                         address.City = dataValues[7];
                         address.Address1 = dataValues[8];
                         address.PinCode = Convert.ToInt32(dataValues[9]);
@@ -72,10 +76,13 @@ namespace TimeSheetManagamentService
                     if (!Directory.Exists(archiveDirectory))
                     {
                         Directory.CreateDirectory(archiveDirectory);
+                        if (File.Exists(fileWatchLocation ))
+                            File.Move(fileWatchLocation, archiveDirectory + "DataFile.csv" + "_" + System.DateTime.Now.ToString().Replace('-', '_').Replace(':', '_'));
                     }
                     else
                     {
-                        Directory.Move(fileWatchLocation, archiveDirectory);
+                        if (File.Exists(fileWatchLocation))
+                            File.Move(fileWatchLocation, archiveDirectory + "DataFile.csv" + "_" + System.DateTime.Now.ToString().Replace('-', '_').Replace(':', '_'));
                     }
 
                 }
@@ -84,10 +91,13 @@ namespace TimeSheetManagamentService
                     if (!Directory.Exists(failureDirectory))
                     {
                         Directory.CreateDirectory(failureDirectory);
+                        if (File.Exists(fileWatchLocation))
+                            File.Move(fileWatchLocation, failureDirectory + "DataFile.csv" + "_" + System.DateTime.Now.ToString().Replace('-', '_').Replace(':', '_'));
                     }
                     else
                     {
-                        Directory.Move(fileWatchLocation, failureDirectory);
+                        if (File.Exists(fileWatchLocation))
+                            File.Move(fileWatchLocation, failureDirectory + "DataFile.csv" + "_" + System.DateTime.Now.ToString().Replace('-', '_').Replace(':', '_'));
                     }
                 }
                 Task.Delay(10000);

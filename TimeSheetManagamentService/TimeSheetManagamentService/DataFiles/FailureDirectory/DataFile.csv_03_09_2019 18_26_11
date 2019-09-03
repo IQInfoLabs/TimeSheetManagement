@@ -1,0 +1,2 @@
+first_name,last_name,designation,email_id,employee_start_date,emp_status,emloyee_type,city,address,pincode,country,state,project_name,start_date,end_date,proj_status,allocation_status
+Arun,Rahul,Software Engineer,arunrahul@gmail.com,18-05-2019,Active,Permanent,Hyderabad,Hyderabad,500081,India,Telangana,TimeSheetManagement,18-05-2019,18-05-2021,Active,Active
