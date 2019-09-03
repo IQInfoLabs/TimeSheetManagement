@@ -1,8 +1,11 @@
 use master 
 go
+
+if exists(select * from sys.databases where name='TimeSheetManagement')
 drop database TimeSheetManagement
 go
 
+if not exists(select * from sys.databases where name='TimeSheetManagement')
 create database TimeSheetManagement
 go
 
@@ -93,6 +96,8 @@ Last_Updated_Date date)
 go
 
 alter table [Address] add constraint FK_Address_Geo_Id foreign key(Geo_Id)references Geo_Location(Geo_Id)
+go
 alter table employee_project_details add constraint FK_employee_project_details_Geo_Id foreign key(Geo_Id)references Geo_Location(Geo_Id)
+go
 alter table holiday_calender add constraint FK_holiday_calender_Geo_Id foreign key(Geo_Id)references Geo_Location(Geo_Id)
-
+go
