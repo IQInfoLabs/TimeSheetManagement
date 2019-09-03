@@ -9,6 +9,9 @@ if not exists(select * from sys.databases where name='TimeSheetManagement')
 create database TimeSheetManagement
 go
 
+USE TimeSheetManagement
+GO
+
 create table Employee_Details
 (Employee_Id int primary key,First_Name varchar(100),Last_Name varchar(100),
 Designation varchar(max),[Password] varchar(max),Email_Id varchar(max),
