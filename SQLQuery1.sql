@@ -93,3 +93,6 @@ Last_Updated_Date date)
 go
 
 alter table [Address] add constraint FK_Address_Geo_Id foreign key(Geo_Id)references Geo_Location(Geo_Id)
+alter table employee_project_details add constraint FK_employee_project_details_Geo_Id foreign key(Geo_Id)references Geo_Location(Geo_Id)
+alter table holiday_calender add constraint FK_holiday_calender_Geo_Id foreign key(Geo_Id)references Geo_Location(Geo_Id)
+
