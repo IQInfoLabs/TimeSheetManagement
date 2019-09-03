@@ -19,6 +19,7 @@ namespace TimeSheetManagamentService
 
         protected override void OnStart(string[] args)
         {
+            TimeManagement.Instance.EnableFileWatch();
         }
 
         protected override void OnStop()

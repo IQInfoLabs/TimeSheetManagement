@@ -13,6 +13,22 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\RaviT\Desktop\Kumar\ServiceInstall\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,9 +49,33 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>0760B344A8CE9E6E846A627022C63E8087813F19</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>TimeSheetManagamentService_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +85,72 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Address.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Employee_Details.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Employee_Leaves.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Employee_Manager.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Employee_Project_Details.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Employee_Task_Details.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Geo_Location.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Holiday_Calender.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Leaves_Type.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Manager_Approval.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Manager_Project_Details.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Project_Details.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Task_Type.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TimeSheet.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TimeSheetManagementModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimeSheetManagementModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TimeSheetManagementModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TimeSheetManagementModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimeSheetManagementModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Time_Period.cs">
+      <DependentUpon>TimeSheetManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectInstaller.Designer.cs">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </Compile>
     <Compile Include="Service1.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -53,14 +159,54 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeManagement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Model\TimeSheetManagementModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TimeSheetManagementModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\TimeSheetManagementModel.edmx.diagram">
+      <DependentUpon>TimeSheetManagementModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="TimeSheetManagamentService_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Service1.resx">
       <DependentUpon>Service1.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\TimeSheetManagementModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TimeSheetManagementModel.Context.cs</LastGenOutput>
+      <DependentUpon>TimeSheetManagementModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\TimeSheetManagementModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TimeSheetManagementModel.edmx</DependentUpon>
+      <LastGenOutput>TimeSheetManagementModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

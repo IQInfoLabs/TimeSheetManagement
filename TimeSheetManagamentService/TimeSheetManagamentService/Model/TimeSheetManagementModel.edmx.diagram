@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0cbc09d8ee95481f9d3a639defea28fd" Name="Diagram1">
+        <EntityTypeShape EntityType="TimeSheetManagementModel.Address" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeSheetManagementModel.Employee_Details" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeSheetManagementModel.Employee_Leaves" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeSheetManagementModel.Employee_Manager" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeSheetManagementModel.Employee_Project_Details" Width="1.5" PointX="6" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeSheetManagementModel.Employee_Task_Details" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeSheetManagementModel.Geo_Location" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeSheetManagementModel.Holiday_Calender" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeSheetManagementModel.Leaves_Type" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeSheetManagementModel.Manager_Approval" Width="1.5" PointX="7.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeSheetManagementModel.Manager_Project_Details" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeSheetManagementModel.Project_Details" Width="1.5" PointX="3.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeSheetManagementModel.Task_Type" Width="1.5" PointX="5.25" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeSheetManagementModel.Time_Period" Width="1.5" PointX="5.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TimeSheetManagementModel.TimeSheet" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK__Address__Employe__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK_Address_Geo_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK__Employee___Emplo__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK__Employee___Emplo__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK__Employee___Emplo__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK__TimeSheet__Leave__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK__Manager_A__Manag__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK__Manager_P__Manag__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK__Employee___Proje__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK_employee_project_details_Geo_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK__Employee___Task___59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK__Employee___TimeS__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK_holiday_calender_Geo_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK__Manager_A__TimeS__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="TimeSheetManagementModel.FK__Manager_P__Proje__47DBAE45" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
