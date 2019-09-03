@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace TimeSheetManagamentService
 {
-    public partial class Service1 : ServiceBase
+    public partial class TimeSheetManagement : ServiceBase
     {
-        public Service1()
+        public TimeSheetManagement()
         {
             InitializeComponent();
         }

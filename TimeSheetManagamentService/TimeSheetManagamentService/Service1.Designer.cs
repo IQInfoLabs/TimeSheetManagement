@@ -1,6 +1,6 @@
 ﻿namespace TimeSheetManagamentService
 {
-    partial class Service1
+    partial class TimeSheetManagement
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.ServiceName = "Service1";
+            // 
+            // TimeSheetManagement
+            // 
+            this.ServiceName = "TimeSheetManagement";
+
         }
 
         #endregion
