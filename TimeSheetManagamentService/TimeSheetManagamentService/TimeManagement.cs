@@ -40,7 +40,7 @@ namespace TimeSheetManagamentService
                         int empId = 0;
                         if (dbContext.Employee_Details.Any())
                         {
-                            empId = dbContext.Employee_Details.Where(emp => emp.First_Name == firstName).OrderByDescending(e => e.Employee_Id).FirstOrDefault().Employee_Id;
+                            empId = dbContext.Employee_Details.OrderByDescending(e => e.Employee_Id).FirstOrDefault().Employee_Id;
                         }
                         empId = empId + 1;
                         Employee_Details employee_Details = new Employee_Details();

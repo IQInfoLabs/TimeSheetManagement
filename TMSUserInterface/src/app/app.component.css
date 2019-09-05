@@ -1,0 +1,15 @@
+mat-grid-tile {
+    background: lightblue;
+  }
+  
+.container
+{
+    display:flex;
+    width: 100%;
+    flex-flow: column;
+}
+
+.btn
+{
+width: 80px !important;
+}

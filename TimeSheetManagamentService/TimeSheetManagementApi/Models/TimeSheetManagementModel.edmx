@@ -1,0 +1,1135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TimeSheetManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Address_Id" />
+          </Key>
+          <Property Name="Address_Id" Type="int" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="PinCode" Type="int" />
+          <Property Name="Geo_Id" Type="int" />
+          <Property Name="Employee_Id" Type="int" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="Last_Updated_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Employee_Details">
+          <Key>
+            <PropertyRef Name="Employee_Id" />
+          </Key>
+          <Property Name="Employee_Id" Type="int" Nullable="false" />
+          <Property Name="First_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Designation" Type="varchar(max)" />
+          <Property Name="Password" Type="varchar(max)" />
+          <Property Name="Email_Id" Type="varchar(max)" />
+          <Property Name="Start_Date" Type="date" />
+          <Property Name="End_Date" Type="date" />
+          <Property Name="Emp_Status" Type="bit" />
+          <Property Name="Employee_Type" Type="int" />
+          <Property Name="Address_Id" Type="int" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="Last_Updated_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Employee_Leaves">
+          <Key>
+            <PropertyRef Name="Leave_Id" />
+          </Key>
+          <Property Name="Leave_Id" Type="int" Nullable="false" />
+          <Property Name="Employee_Id" Type="int" />
+          <Property Name="Leave_Type_Id" Type="int" />
+          <Property Name="Start_Date" Type="date" />
+          <Property Name="End_Date" Type="date" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="Last_Updated_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Employee_Manager">
+          <Key>
+            <PropertyRef Name="Manager_Id" />
+          </Key>
+          <Property Name="Manager_Id" Type="int" Nullable="false" />
+          <Property Name="Employee_Id" Type="int" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="Last_Updated_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Employee_Project_Details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Employee_Id" Type="int" />
+          <Property Name="Project_Id" Type="int" />
+          <Property Name="Geo_Id" Type="int" />
+          <Property Name="Start_Date" Type="date" />
+          <Property Name="End_Date" Type="date" />
+          <Property Name="Allocation_Status" Type="bit" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="Last_Updated_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Employee_Task_Details">
+          <Key>
+            <PropertyRef Name="Employee_Task_Id" />
+          </Key>
+          <Property Name="Employee_Task_Id" Type="int" Nullable="false" />
+          <Property Name="TimeSheet_Id" Type="int" />
+          <Property Name="Task_Id" Type="int" />
+          <Property Name="Employee_Hours" Type="int" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="Last_Updated_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Geo_Location">
+          <Key>
+            <PropertyRef Name="Geo_Id" />
+          </Key>
+          <Property Name="Geo_Id" Type="int" Nullable="false" />
+          <Property Name="Continent" Type="varchar" MaxLength="100" />
+          <Property Name="Country" Type="varchar(max)" />
+          <Property Name="State" Type="varchar" MaxLength="100" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="Last_Updated_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Holiday_Calender">
+          <Key>
+            <PropertyRef Name="Holiday_Id" />
+          </Key>
+          <Property Name="Holiday_Id" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Day" Type="varchar" MaxLength="15" />
+          <Property Name="Occasion" Type="varchar" MaxLength="100" />
+          <Property Name="Geo_Id" Type="int" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="Last_Updated_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Leaves_Type">
+          <Key>
+            <PropertyRef Name="Leave_ID" />
+          </Key>
+          <Property Name="Leave_ID" Type="int" Nullable="false" />
+          <Property Name="Leave_Type" Type="varchar" MaxLength="100" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="Last_Updated_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Manager_Approval">
+          <Key>
+            <PropertyRef Name="Approval_ID" />
+          </Key>
+          <Property Name="Approval_ID" Type="int" Nullable="false" />
+          <Property Name="TimeSheet_Id" Type="int" />
+          <Property Name="Manager_Id" Type="int" />
+          <Property Name="Submission_Date" Type="date" />
+          <Property Name="Is_Approved" Type="bit" />
+          <Property Name="Created_Date" Type="date" />
+          <Property Name="Last_Updated_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="Manager_Project_Details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Manager_Id" Type="int" />
+          <Property Name="Project_Id" Type="int" />
+          <Property Name="Start_Date" Type="date" />
+          <Property Name="End_Date" Type="date" />
+          <Property Name="Allocation_Status" Type="bit" />
+          <Property Name="Bill_Id" Type="int" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="Last_Updated_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Project_Details">
+          <Key>
+            <PropertyRef Name="Project_Id" />
+          </Key>
+          <Property Name="Project_Id" Type="int" Nullable="false" />
+          <Property Name="Project_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Start_Date" Type="date" />
+          <Property Name="End_Date" Type="date" />
+          <Property Name="Project_Status" Type="bit" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="Last_Updated_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Task_Type">
+          <Key>
+            <PropertyRef Name="Task_Id" />
+          </Key>
+          <Property Name="Task_Id" Type="int" Nullable="false" />
+          <Property Name="Task_Type" Type="varchar" MaxLength="100" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="Last_Updated_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Time_Period">
+          <Key>
+            <PropertyRef Name="Period_Id" />
+          </Key>
+          <Property Name="Period_Id" Type="int" Nullable="false" />
+          <Property Name="Start_Date" Type="date" />
+          <Property Name="End_Date" Type="date" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="Last_Updated_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TimeSheet">
+          <Key>
+            <PropertyRef Name="TimeSheet_Id" />
+          </Key>
+          <Property Name="TimeSheet_Id" Type="int" Nullable="false" />
+          <Property Name="Period_Id" Type="int" />
+          <Property Name="Working_Hours" Type="int" />
+          <Property Name="OverTime" Type="int" />
+          <Property Name="Leave_Id" Type="int" />
+          <Property Name="created_Date" Type="datetime" />
+          <Property Name="Last_Updated_Date" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Address__Employe__398D8EEE">
+          <End Role="Employee_Details" Type="Self.Employee_Details" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Details">
+              <PropertyRef Name="Employee_Id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Emplo__403A8C7D">
+          <End Role="Employee_Details" Type="Self.Employee_Details" Multiplicity="0..1" />
+          <End Role="Employee_Project_Details" Type="Self.Employee_Project_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Details">
+              <PropertyRef Name="Employee_Id" />
+            </Principal>
+            <Dependent Role="Employee_Project_Details">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Emplo__440B1D61">
+          <End Role="Employee_Details" Type="Self.Employee_Details" Multiplicity="0..1" />
+          <End Role="Employee_Manager" Type="Self.Employee_Manager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Details">
+              <PropertyRef Name="Employee_Id" />
+            </Principal>
+            <Dependent Role="Employee_Manager">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Emplo__4CA06362">
+          <End Role="Employee_Details" Type="Self.Employee_Details" Multiplicity="0..1" />
+          <End Role="Employee_Leaves" Type="Self.Employee_Leaves" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Details">
+              <PropertyRef Name="Employee_Id" />
+            </Principal>
+            <Dependent Role="Employee_Leaves">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Proje__412EB0B6">
+          <End Role="Project_Details" Type="Self.Project_Details" Multiplicity="0..1" />
+          <End Role="Employee_Project_Details" Type="Self.Employee_Project_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Details">
+              <PropertyRef Name="Project_Id" />
+            </Principal>
+            <Dependent Role="Employee_Project_Details">
+              <PropertyRef Name="Project_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Task___59063A47">
+          <End Role="Task_Type" Type="Self.Task_Type" Multiplicity="0..1" />
+          <End Role="Employee_Task_Details" Type="Self.Employee_Task_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task_Type">
+              <PropertyRef Name="Task_Id" />
+            </Principal>
+            <Dependent Role="Employee_Task_Details">
+              <PropertyRef Name="Task_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___TimeS__5812160E">
+          <End Role="TimeSheet" Type="Self.TimeSheet" Multiplicity="0..1" />
+          <End Role="Employee_Task_Details" Type="Self.Employee_Task_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeSheet">
+              <PropertyRef Name="TimeSheet_Id" />
+            </Principal>
+            <Dependent Role="Employee_Task_Details">
+              <PropertyRef Name="TimeSheet_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Manager_A__Manag__5CD6CB2B">
+          <End Role="Employee_Manager" Type="Self.Employee_Manager" Multiplicity="0..1" />
+          <End Role="Manager_Approval" Type="Self.Manager_Approval" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Manager">
+              <PropertyRef Name="Manager_Id" />
+            </Principal>
+            <Dependent Role="Manager_Approval">
+              <PropertyRef Name="Manager_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Manager_A__TimeS__5BE2A6F2">
+          <End Role="TimeSheet" Type="Self.TimeSheet" Multiplicity="0..1" />
+          <End Role="Manager_Approval" Type="Self.Manager_Approval" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeSheet">
+              <PropertyRef Name="TimeSheet_Id" />
+            </Principal>
+            <Dependent Role="Manager_Approval">
+              <PropertyRef Name="TimeSheet_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Manager_P__Manag__46E78A0C">
+          <End Role="Employee_Manager" Type="Self.Employee_Manager" Multiplicity="0..1" />
+          <End Role="Manager_Project_Details" Type="Self.Manager_Project_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Manager">
+              <PropertyRef Name="Manager_Id" />
+            </Principal>
+            <Dependent Role="Manager_Project_Details">
+              <PropertyRef Name="Manager_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Manager_P__Proje__47DBAE45">
+          <End Role="Project_Details" Type="Self.Project_Details" Multiplicity="0..1" />
+          <End Role="Manager_Project_Details" Type="Self.Manager_Project_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Details">
+              <PropertyRef Name="Project_Id" />
+            </Principal>
+            <Dependent Role="Manager_Project_Details">
+              <PropertyRef Name="Project_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TimeSheet__Leave__5165187F">
+          <End Role="Employee_Leaves" Type="Self.Employee_Leaves" Multiplicity="0..1" />
+          <End Role="TimeSheet" Type="Self.TimeSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Leaves">
+              <PropertyRef Name="Leave_Id" />
+            </Principal>
+            <Dependent Role="TimeSheet">
+              <PropertyRef Name="Leave_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Geo_Id">
+          <End Role="Geo_Location" Type="Self.Geo_Location" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geo_Location">
+              <PropertyRef Name="Geo_Id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="Geo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_employee_project_details_Geo_Id">
+          <End Role="Geo_Location" Type="Self.Geo_Location" Multiplicity="0..1" />
+          <End Role="Employee_Project_Details" Type="Self.Employee_Project_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geo_Location">
+              <PropertyRef Name="Geo_Id" />
+            </Principal>
+            <Dependent Role="Employee_Project_Details">
+              <PropertyRef Name="Geo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_holiday_calender_Geo_Id">
+          <End Role="Geo_Location" Type="Self.Geo_Location" Multiplicity="0..1" />
+          <End Role="Holiday_Calender" Type="Self.Holiday_Calender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geo_Location">
+              <PropertyRef Name="Geo_Id" />
+            </Principal>
+            <Dependent Role="Holiday_Calender">
+              <PropertyRef Name="Geo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TimeSheetManagementModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_Details" EntityType="Self.Employee_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_Leaves" EntityType="Self.Employee_Leaves" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_Manager" EntityType="Self.Employee_Manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_Project_Details" EntityType="Self.Employee_Project_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_Task_Details" EntityType="Self.Employee_Task_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Geo_Location" EntityType="Self.Geo_Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Holiday_Calender" EntityType="Self.Holiday_Calender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leaves_Type" EntityType="Self.Leaves_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manager_Approval" EntityType="Self.Manager_Approval" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manager_Project_Details" EntityType="Self.Manager_Project_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project_Details" EntityType="Self.Project_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task_Type" EntityType="Self.Task_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Time_Period" EntityType="Self.Time_Period" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeSheet" EntityType="Self.TimeSheet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Address__Employe__398D8EEE" Association="Self.FK__Address__Employe__398D8EEE">
+            <End Role="Employee_Details" EntitySet="Employee_Details" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Emplo__403A8C7D" Association="Self.FK__Employee___Emplo__403A8C7D">
+            <End Role="Employee_Details" EntitySet="Employee_Details" />
+            <End Role="Employee_Project_Details" EntitySet="Employee_Project_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Emplo__440B1D61" Association="Self.FK__Employee___Emplo__440B1D61">
+            <End Role="Employee_Details" EntitySet="Employee_Details" />
+            <End Role="Employee_Manager" EntitySet="Employee_Manager" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Emplo__4CA06362" Association="Self.FK__Employee___Emplo__4CA06362">
+            <End Role="Employee_Details" EntitySet="Employee_Details" />
+            <End Role="Employee_Leaves" EntitySet="Employee_Leaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Proje__412EB0B6" Association="Self.FK__Employee___Proje__412EB0B6">
+            <End Role="Project_Details" EntitySet="Project_Details" />
+            <End Role="Employee_Project_Details" EntitySet="Employee_Project_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Task___59063A47" Association="Self.FK__Employee___Task___59063A47">
+            <End Role="Task_Type" EntitySet="Task_Type" />
+            <End Role="Employee_Task_Details" EntitySet="Employee_Task_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___TimeS__5812160E" Association="Self.FK__Employee___TimeS__5812160E">
+            <End Role="TimeSheet" EntitySet="TimeSheet" />
+            <End Role="Employee_Task_Details" EntitySet="Employee_Task_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Manager_A__Manag__5CD6CB2B" Association="Self.FK__Manager_A__Manag__5CD6CB2B">
+            <End Role="Employee_Manager" EntitySet="Employee_Manager" />
+            <End Role="Manager_Approval" EntitySet="Manager_Approval" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Manager_A__TimeS__5BE2A6F2" Association="Self.FK__Manager_A__TimeS__5BE2A6F2">
+            <End Role="TimeSheet" EntitySet="TimeSheet" />
+            <End Role="Manager_Approval" EntitySet="Manager_Approval" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Manager_P__Manag__46E78A0C" Association="Self.FK__Manager_P__Manag__46E78A0C">
+            <End Role="Employee_Manager" EntitySet="Employee_Manager" />
+            <End Role="Manager_Project_Details" EntitySet="Manager_Project_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Manager_P__Proje__47DBAE45" Association="Self.FK__Manager_P__Proje__47DBAE45">
+            <End Role="Project_Details" EntitySet="Project_Details" />
+            <End Role="Manager_Project_Details" EntitySet="Manager_Project_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TimeSheet__Leave__5165187F" Association="Self.FK__TimeSheet__Leave__5165187F">
+            <End Role="Employee_Leaves" EntitySet="Employee_Leaves" />
+            <End Role="TimeSheet" EntitySet="TimeSheet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Geo_Id" Association="Self.FK_Address_Geo_Id">
+            <End Role="Geo_Location" EntitySet="Geo_Location" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_employee_project_details_Geo_Id" Association="Self.FK_employee_project_details_Geo_Id">
+            <End Role="Geo_Location" EntitySet="Geo_Location" />
+            <End Role="Employee_Project_Details" EntitySet="Employee_Project_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_holiday_calender_Geo_Id" Association="Self.FK_holiday_calender_Geo_Id">
+            <End Role="Geo_Location" EntitySet="Geo_Location" />
+            <End Role="Holiday_Calender" EntitySet="Holiday_Calender" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TimeSheetManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Address_Id" />
+          </Key>
+          <Property Name="Address_Id" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PinCode" Type="Int32" />
+          <Property Name="Geo_Id" Type="Int32" />
+          <Property Name="Employee_Id" Type="Int32" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Employee_Details" Relationship="Self.FK__Address__Employe__398D8EEE" FromRole="Address" ToRole="Employee_Details" />
+          <NavigationProperty Name="Geo_Location" Relationship="Self.FK_Address_Geo_Id" FromRole="Address" ToRole="Geo_Location" />
+        </EntityType>
+        <EntityType Name="Employee_Details">
+          <Key>
+            <PropertyRef Name="Employee_Id" />
+          </Key>
+          <Property Name="Employee_Id" Type="Int32" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Designation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Start_Date" Type="DateTime" Precision="0" />
+          <Property Name="End_Date" Type="DateTime" Precision="0" />
+          <Property Name="Emp_Status" Type="Boolean" />
+          <Property Name="Employee_Type" Type="Int32" />
+          <Property Name="Address_Id" Type="Int32" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK__Address__Employe__398D8EEE" FromRole="Employee_Details" ToRole="Address" />
+          <NavigationProperty Name="Employee_Project_Details" Relationship="Self.FK__Employee___Emplo__403A8C7D" FromRole="Employee_Details" ToRole="Employee_Project_Details" />
+          <NavigationProperty Name="Employee_Manager" Relationship="Self.FK__Employee___Emplo__440B1D61" FromRole="Employee_Details" ToRole="Employee_Manager" />
+          <NavigationProperty Name="Employee_Leaves" Relationship="Self.FK__Employee___Emplo__4CA06362" FromRole="Employee_Details" ToRole="Employee_Leaves" />
+        </EntityType>
+        <EntityType Name="Employee_Leaves">
+          <Key>
+            <PropertyRef Name="Leave_Id" />
+          </Key>
+          <Property Name="Leave_Id" Type="Int32" Nullable="false" />
+          <Property Name="Employee_Id" Type="Int32" />
+          <Property Name="Leave_Type_Id" Type="Int32" />
+          <Property Name="Start_Date" Type="DateTime" Precision="0" />
+          <Property Name="End_Date" Type="DateTime" Precision="0" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Employee_Details" Relationship="Self.FK__Employee___Emplo__4CA06362" FromRole="Employee_Leaves" ToRole="Employee_Details" />
+          <NavigationProperty Name="TimeSheets" Relationship="Self.FK__TimeSheet__Leave__5165187F" FromRole="Employee_Leaves" ToRole="TimeSheet" />
+        </EntityType>
+        <EntityType Name="Employee_Manager">
+          <Key>
+            <PropertyRef Name="Manager_Id" />
+          </Key>
+          <Property Name="Manager_Id" Type="Int32" Nullable="false" />
+          <Property Name="Employee_Id" Type="Int32" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Employee_Details" Relationship="Self.FK__Employee___Emplo__440B1D61" FromRole="Employee_Manager" ToRole="Employee_Details" />
+          <NavigationProperty Name="Manager_Approval" Relationship="Self.FK__Manager_A__Manag__5CD6CB2B" FromRole="Employee_Manager" ToRole="Manager_Approval" />
+          <NavigationProperty Name="Manager_Project_Details" Relationship="Self.FK__Manager_P__Manag__46E78A0C" FromRole="Employee_Manager" ToRole="Manager_Project_Details" />
+        </EntityType>
+        <EntityType Name="Employee_Project_Details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Employee_Id" Type="Int32" />
+          <Property Name="Project_Id" Type="Int32" />
+          <Property Name="Geo_Id" Type="Int32" />
+          <Property Name="Start_Date" Type="DateTime" Precision="0" />
+          <Property Name="End_Date" Type="DateTime" Precision="0" />
+          <Property Name="Allocation_Status" Type="Boolean" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Employee_Details" Relationship="Self.FK__Employee___Emplo__403A8C7D" FromRole="Employee_Project_Details" ToRole="Employee_Details" />
+          <NavigationProperty Name="Project_Details" Relationship="Self.FK__Employee___Proje__412EB0B6" FromRole="Employee_Project_Details" ToRole="Project_Details" />
+          <NavigationProperty Name="Geo_Location" Relationship="Self.FK_employee_project_details_Geo_Id" FromRole="Employee_Project_Details" ToRole="Geo_Location" />
+        </EntityType>
+        <EntityType Name="Employee_Task_Details">
+          <Key>
+            <PropertyRef Name="Employee_Task_Id" />
+          </Key>
+          <Property Name="Employee_Task_Id" Type="Int32" Nullable="false" />
+          <Property Name="TimeSheet_Id" Type="Int32" />
+          <Property Name="Task_Id" Type="Int32" />
+          <Property Name="Employee_Hours" Type="Int32" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Task_Type" Relationship="Self.FK__Employee___Task___59063A47" FromRole="Employee_Task_Details" ToRole="Task_Type" />
+          <NavigationProperty Name="TimeSheet" Relationship="Self.FK__Employee___TimeS__5812160E" FromRole="Employee_Task_Details" ToRole="TimeSheet" />
+        </EntityType>
+        <EntityType Name="Geo_Location">
+          <Key>
+            <PropertyRef Name="Geo_Id" />
+          </Key>
+          <Property Name="Geo_Id" Type="Int32" Nullable="false" />
+          <Property Name="Continent" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_Address_Geo_Id" FromRole="Geo_Location" ToRole="Address" />
+          <NavigationProperty Name="Employee_Project_Details" Relationship="Self.FK_employee_project_details_Geo_Id" FromRole="Geo_Location" ToRole="Employee_Project_Details" />
+          <NavigationProperty Name="Holiday_Calender" Relationship="Self.FK_holiday_calender_Geo_Id" FromRole="Geo_Location" ToRole="Holiday_Calender" />
+        </EntityType>
+        <EntityType Name="Holiday_Calender">
+          <Key>
+            <PropertyRef Name="Holiday_Id" />
+          </Key>
+          <Property Name="Holiday_Id" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Day" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Occasion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Geo_Id" Type="Int32" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Geo_Location" Relationship="Self.FK_holiday_calender_Geo_Id" FromRole="Holiday_Calender" ToRole="Geo_Location" />
+        </EntityType>
+        <EntityType Name="Leaves_Type">
+          <Key>
+            <PropertyRef Name="Leave_ID" />
+          </Key>
+          <Property Name="Leave_ID" Type="Int32" Nullable="false" />
+          <Property Name="Leave_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Manager_Approval">
+          <Key>
+            <PropertyRef Name="Approval_ID" />
+          </Key>
+          <Property Name="Approval_ID" Type="Int32" Nullable="false" />
+          <Property Name="TimeSheet_Id" Type="Int32" />
+          <Property Name="Manager_Id" Type="Int32" />
+          <Property Name="Submission_Date" Type="DateTime" Precision="0" />
+          <Property Name="Is_Approved" Type="Boolean" />
+          <Property Name="Created_Date" Type="DateTime" Precision="0" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Employee_Manager" Relationship="Self.FK__Manager_A__Manag__5CD6CB2B" FromRole="Manager_Approval" ToRole="Employee_Manager" />
+          <NavigationProperty Name="TimeSheet" Relationship="Self.FK__Manager_A__TimeS__5BE2A6F2" FromRole="Manager_Approval" ToRole="TimeSheet" />
+        </EntityType>
+        <EntityType Name="Manager_Project_Details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Manager_Id" Type="Int32" />
+          <Property Name="Project_Id" Type="Int32" />
+          <Property Name="Start_Date" Type="DateTime" Precision="0" />
+          <Property Name="End_Date" Type="DateTime" Precision="0" />
+          <Property Name="Allocation_Status" Type="Boolean" />
+          <Property Name="Bill_Id" Type="Int32" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Employee_Manager" Relationship="Self.FK__Manager_P__Manag__46E78A0C" FromRole="Manager_Project_Details" ToRole="Employee_Manager" />
+          <NavigationProperty Name="Project_Details" Relationship="Self.FK__Manager_P__Proje__47DBAE45" FromRole="Manager_Project_Details" ToRole="Project_Details" />
+        </EntityType>
+        <EntityType Name="Project_Details">
+          <Key>
+            <PropertyRef Name="Project_Id" />
+          </Key>
+          <Property Name="Project_Id" Type="Int32" Nullable="false" />
+          <Property Name="Project_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Start_Date" Type="DateTime" Precision="0" />
+          <Property Name="End_Date" Type="DateTime" Precision="0" />
+          <Property Name="Project_Status" Type="Boolean" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Employee_Project_Details" Relationship="Self.FK__Employee___Proje__412EB0B6" FromRole="Project_Details" ToRole="Employee_Project_Details" />
+          <NavigationProperty Name="Manager_Project_Details" Relationship="Self.FK__Manager_P__Proje__47DBAE45" FromRole="Project_Details" ToRole="Manager_Project_Details" />
+        </EntityType>
+        <EntityType Name="Task_Type">
+          <Key>
+            <PropertyRef Name="Task_Id" />
+          </Key>
+          <Property Name="Task_Id" Type="Int32" Nullable="false" />
+          <Property Name="Task_Type1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Employee_Task_Details" Relationship="Self.FK__Employee___Task___59063A47" FromRole="Task_Type" ToRole="Employee_Task_Details" />
+        </EntityType>
+        <EntityType Name="Time_Period">
+          <Key>
+            <PropertyRef Name="Period_Id" />
+          </Key>
+          <Property Name="Period_Id" Type="Int32" Nullable="false" />
+          <Property Name="Start_Date" Type="DateTime" Precision="0" />
+          <Property Name="End_Date" Type="DateTime" Precision="0" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TimeSheet">
+          <Key>
+            <PropertyRef Name="TimeSheet_Id" />
+          </Key>
+          <Property Name="TimeSheet_Id" Type="Int32" Nullable="false" />
+          <Property Name="Period_Id" Type="Int32" />
+          <Property Name="Working_Hours" Type="Int32" />
+          <Property Name="OverTime" Type="Int32" />
+          <Property Name="Leave_Id" Type="Int32" />
+          <Property Name="created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Last_Updated_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Employee_Leaves" Relationship="Self.FK__TimeSheet__Leave__5165187F" FromRole="TimeSheet" ToRole="Employee_Leaves" />
+          <NavigationProperty Name="Employee_Task_Details" Relationship="Self.FK__Employee___TimeS__5812160E" FromRole="TimeSheet" ToRole="Employee_Task_Details" />
+          <NavigationProperty Name="Manager_Approval" Relationship="Self.FK__Manager_A__TimeS__5BE2A6F2" FromRole="TimeSheet" ToRole="Manager_Approval" />
+        </EntityType>
+        <Association Name="FK__Address__Employe__398D8EEE">
+          <End Role="Employee_Details" Type="Self.Employee_Details" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Details">
+              <PropertyRef Name="Employee_Id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Geo_Id">
+          <End Role="Geo_Location" Type="Self.Geo_Location" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geo_Location">
+              <PropertyRef Name="Geo_Id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="Geo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Emplo__403A8C7D">
+          <End Role="Employee_Details" Type="Self.Employee_Details" Multiplicity="0..1" />
+          <End Role="Employee_Project_Details" Type="Self.Employee_Project_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Details">
+              <PropertyRef Name="Employee_Id" />
+            </Principal>
+            <Dependent Role="Employee_Project_Details">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Emplo__440B1D61">
+          <End Role="Employee_Details" Type="Self.Employee_Details" Multiplicity="0..1" />
+          <End Role="Employee_Manager" Type="Self.Employee_Manager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Details">
+              <PropertyRef Name="Employee_Id" />
+            </Principal>
+            <Dependent Role="Employee_Manager">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Emplo__4CA06362">
+          <End Role="Employee_Details" Type="Self.Employee_Details" Multiplicity="0..1" />
+          <End Role="Employee_Leaves" Type="Self.Employee_Leaves" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Details">
+              <PropertyRef Name="Employee_Id" />
+            </Principal>
+            <Dependent Role="Employee_Leaves">
+              <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TimeSheet__Leave__5165187F">
+          <End Role="Employee_Leaves" Type="Self.Employee_Leaves" Multiplicity="0..1" />
+          <End Role="TimeSheet" Type="Self.TimeSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Leaves">
+              <PropertyRef Name="Leave_Id" />
+            </Principal>
+            <Dependent Role="TimeSheet">
+              <PropertyRef Name="Leave_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Manager_A__Manag__5CD6CB2B">
+          <End Role="Employee_Manager" Type="Self.Employee_Manager" Multiplicity="0..1" />
+          <End Role="Manager_Approval" Type="Self.Manager_Approval" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Manager">
+              <PropertyRef Name="Manager_Id" />
+            </Principal>
+            <Dependent Role="Manager_Approval">
+              <PropertyRef Name="Manager_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Manager_P__Manag__46E78A0C">
+          <End Role="Employee_Manager" Type="Self.Employee_Manager" Multiplicity="0..1" />
+          <End Role="Manager_Project_Details" Type="Self.Manager_Project_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Manager">
+              <PropertyRef Name="Manager_Id" />
+            </Principal>
+            <Dependent Role="Manager_Project_Details">
+              <PropertyRef Name="Manager_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Proje__412EB0B6">
+          <End Role="Project_Details" Type="Self.Project_Details" Multiplicity="0..1" />
+          <End Role="Employee_Project_Details" Type="Self.Employee_Project_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Details">
+              <PropertyRef Name="Project_Id" />
+            </Principal>
+            <Dependent Role="Employee_Project_Details">
+              <PropertyRef Name="Project_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_employee_project_details_Geo_Id">
+          <End Role="Geo_Location" Type="Self.Geo_Location" Multiplicity="0..1" />
+          <End Role="Employee_Project_Details" Type="Self.Employee_Project_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geo_Location">
+              <PropertyRef Name="Geo_Id" />
+            </Principal>
+            <Dependent Role="Employee_Project_Details">
+              <PropertyRef Name="Geo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Task___59063A47">
+          <End Role="Task_Type" Type="Self.Task_Type" Multiplicity="0..1" />
+          <End Role="Employee_Task_Details" Type="Self.Employee_Task_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task_Type">
+              <PropertyRef Name="Task_Id" />
+            </Principal>
+            <Dependent Role="Employee_Task_Details">
+              <PropertyRef Name="Task_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___TimeS__5812160E">
+          <End Role="TimeSheet" Type="Self.TimeSheet" Multiplicity="0..1" />
+          <End Role="Employee_Task_Details" Type="Self.Employee_Task_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeSheet">
+              <PropertyRef Name="TimeSheet_Id" />
+            </Principal>
+            <Dependent Role="Employee_Task_Details">
+              <PropertyRef Name="TimeSheet_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_holiday_calender_Geo_Id">
+          <End Role="Geo_Location" Type="Self.Geo_Location" Multiplicity="0..1" />
+          <End Role="Holiday_Calender" Type="Self.Holiday_Calender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geo_Location">
+              <PropertyRef Name="Geo_Id" />
+            </Principal>
+            <Dependent Role="Holiday_Calender">
+              <PropertyRef Name="Geo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Manager_A__TimeS__5BE2A6F2">
+          <End Role="TimeSheet" Type="Self.TimeSheet" Multiplicity="0..1" />
+          <End Role="Manager_Approval" Type="Self.Manager_Approval" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeSheet">
+              <PropertyRef Name="TimeSheet_Id" />
+            </Principal>
+            <Dependent Role="Manager_Approval">
+              <PropertyRef Name="TimeSheet_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Manager_P__Proje__47DBAE45">
+          <End Role="Project_Details" Type="Self.Project_Details" Multiplicity="0..1" />
+          <End Role="Manager_Project_Details" Type="Self.Manager_Project_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Details">
+              <PropertyRef Name="Project_Id" />
+            </Principal>
+            <Dependent Role="Manager_Project_Details">
+              <PropertyRef Name="Project_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TimeSheetManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="Employee_Details" EntityType="Self.Employee_Details" />
+          <EntitySet Name="Employee_Leaves" EntityType="Self.Employee_Leaves" />
+          <EntitySet Name="Employee_Manager" EntityType="Self.Employee_Manager" />
+          <EntitySet Name="Employee_Project_Details" EntityType="Self.Employee_Project_Details" />
+          <EntitySet Name="Employee_Task_Details" EntityType="Self.Employee_Task_Details" />
+          <EntitySet Name="Geo_Location" EntityType="Self.Geo_Location" />
+          <EntitySet Name="Holiday_Calender" EntityType="Self.Holiday_Calender" />
+          <EntitySet Name="Leaves_Type" EntityType="Self.Leaves_Type" />
+          <EntitySet Name="Manager_Approval" EntityType="Self.Manager_Approval" />
+          <EntitySet Name="Manager_Project_Details" EntityType="Self.Manager_Project_Details" />
+          <EntitySet Name="Project_Details" EntityType="Self.Project_Details" />
+          <EntitySet Name="Task_Type" EntityType="Self.Task_Type" />
+          <EntitySet Name="Time_Period" EntityType="Self.Time_Period" />
+          <EntitySet Name="TimeSheets" EntityType="Self.TimeSheet" />
+          <AssociationSet Name="FK__Address__Employe__398D8EEE" Association="Self.FK__Address__Employe__398D8EEE">
+            <End Role="Employee_Details" EntitySet="Employee_Details" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Geo_Id" Association="Self.FK_Address_Geo_Id">
+            <End Role="Geo_Location" EntitySet="Geo_Location" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Emplo__403A8C7D" Association="Self.FK__Employee___Emplo__403A8C7D">
+            <End Role="Employee_Details" EntitySet="Employee_Details" />
+            <End Role="Employee_Project_Details" EntitySet="Employee_Project_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Emplo__440B1D61" Association="Self.FK__Employee___Emplo__440B1D61">
+            <End Role="Employee_Details" EntitySet="Employee_Details" />
+            <End Role="Employee_Manager" EntitySet="Employee_Manager" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Emplo__4CA06362" Association="Self.FK__Employee___Emplo__4CA06362">
+            <End Role="Employee_Details" EntitySet="Employee_Details" />
+            <End Role="Employee_Leaves" EntitySet="Employee_Leaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TimeSheet__Leave__5165187F" Association="Self.FK__TimeSheet__Leave__5165187F">
+            <End Role="Employee_Leaves" EntitySet="Employee_Leaves" />
+            <End Role="TimeSheet" EntitySet="TimeSheets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Manager_A__Manag__5CD6CB2B" Association="Self.FK__Manager_A__Manag__5CD6CB2B">
+            <End Role="Employee_Manager" EntitySet="Employee_Manager" />
+            <End Role="Manager_Approval" EntitySet="Manager_Approval" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Manager_P__Manag__46E78A0C" Association="Self.FK__Manager_P__Manag__46E78A0C">
+            <End Role="Employee_Manager" EntitySet="Employee_Manager" />
+            <End Role="Manager_Project_Details" EntitySet="Manager_Project_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Proje__412EB0B6" Association="Self.FK__Employee___Proje__412EB0B6">
+            <End Role="Project_Details" EntitySet="Project_Details" />
+            <End Role="Employee_Project_Details" EntitySet="Employee_Project_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_employee_project_details_Geo_Id" Association="Self.FK_employee_project_details_Geo_Id">
+            <End Role="Geo_Location" EntitySet="Geo_Location" />
+            <End Role="Employee_Project_Details" EntitySet="Employee_Project_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Task___59063A47" Association="Self.FK__Employee___Task___59063A47">
+            <End Role="Task_Type" EntitySet="Task_Type" />
+            <End Role="Employee_Task_Details" EntitySet="Employee_Task_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___TimeS__5812160E" Association="Self.FK__Employee___TimeS__5812160E">
+            <End Role="TimeSheet" EntitySet="TimeSheets" />
+            <End Role="Employee_Task_Details" EntitySet="Employee_Task_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_holiday_calender_Geo_Id" Association="Self.FK_holiday_calender_Geo_Id">
+            <End Role="Geo_Location" EntitySet="Geo_Location" />
+            <End Role="Holiday_Calender" EntitySet="Holiday_Calender" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Manager_A__TimeS__5BE2A6F2" Association="Self.FK__Manager_A__TimeS__5BE2A6F2">
+            <End Role="TimeSheet" EntitySet="TimeSheets" />
+            <End Role="Manager_Approval" EntitySet="Manager_Approval" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Manager_P__Proje__47DBAE45" Association="Self.FK__Manager_P__Proje__47DBAE45">
+            <End Role="Project_Details" EntitySet="Project_Details" />
+            <End Role="Manager_Project_Details" EntitySet="Manager_Project_Details" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TimeSheetManagementModelStoreContainer" CdmEntityContainer="TimeSheetManagementEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="Address_Id" ColumnName="Address_Id" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address1" ColumnName="Address" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="Geo_Id" ColumnName="Geo_Id" />
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_Details">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.Employee_Details">
+              <MappingFragment StoreEntitySet="Employee_Details">
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email_Id" ColumnName="Email_Id" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="Emp_Status" ColumnName="Emp_Status" />
+                <ScalarProperty Name="Employee_Type" ColumnName="Employee_Type" />
+                <ScalarProperty Name="Address_Id" ColumnName="Address_Id" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_Leaves">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.Employee_Leaves">
+              <MappingFragment StoreEntitySet="Employee_Leaves">
+                <ScalarProperty Name="Leave_Id" ColumnName="Leave_Id" />
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+                <ScalarProperty Name="Leave_Type_Id" ColumnName="Leave_Type_Id" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_Manager">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.Employee_Manager">
+              <MappingFragment StoreEntitySet="Employee_Manager">
+                <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_Project_Details">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.Employee_Project_Details">
+              <MappingFragment StoreEntitySet="Employee_Project_Details">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+                <ScalarProperty Name="Project_Id" ColumnName="Project_Id" />
+                <ScalarProperty Name="Geo_Id" ColumnName="Geo_Id" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="Allocation_Status" ColumnName="Allocation_Status" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_Task_Details">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.Employee_Task_Details">
+              <MappingFragment StoreEntitySet="Employee_Task_Details">
+                <ScalarProperty Name="Employee_Task_Id" ColumnName="Employee_Task_Id" />
+                <ScalarProperty Name="TimeSheet_Id" ColumnName="TimeSheet_Id" />
+                <ScalarProperty Name="Task_Id" ColumnName="Task_Id" />
+                <ScalarProperty Name="Employee_Hours" ColumnName="Employee_Hours" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geo_Location">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.Geo_Location">
+              <MappingFragment StoreEntitySet="Geo_Location">
+                <ScalarProperty Name="Geo_Id" ColumnName="Geo_Id" />
+                <ScalarProperty Name="Continent" ColumnName="Continent" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Holiday_Calender">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.Holiday_Calender">
+              <MappingFragment StoreEntitySet="Holiday_Calender">
+                <ScalarProperty Name="Holiday_Id" ColumnName="Holiday_Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Occasion" ColumnName="Occasion" />
+                <ScalarProperty Name="Geo_Id" ColumnName="Geo_Id" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leaves_Type">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.Leaves_Type">
+              <MappingFragment StoreEntitySet="Leaves_Type">
+                <ScalarProperty Name="Leave_ID" ColumnName="Leave_ID" />
+                <ScalarProperty Name="Leave_Type" ColumnName="Leave_Type" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manager_Approval">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.Manager_Approval">
+              <MappingFragment StoreEntitySet="Manager_Approval">
+                <ScalarProperty Name="Approval_ID" ColumnName="Approval_ID" />
+                <ScalarProperty Name="TimeSheet_Id" ColumnName="TimeSheet_Id" />
+                <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+                <ScalarProperty Name="Submission_Date" ColumnName="Submission_Date" />
+                <ScalarProperty Name="Is_Approved" ColumnName="Is_Approved" />
+                <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manager_Project_Details">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.Manager_Project_Details">
+              <MappingFragment StoreEntitySet="Manager_Project_Details">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+                <ScalarProperty Name="Project_Id" ColumnName="Project_Id" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="Allocation_Status" ColumnName="Allocation_Status" />
+                <ScalarProperty Name="Bill_Id" ColumnName="Bill_Id" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project_Details">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.Project_Details">
+              <MappingFragment StoreEntitySet="Project_Details">
+                <ScalarProperty Name="Project_Id" ColumnName="Project_Id" />
+                <ScalarProperty Name="Project_Name" ColumnName="Project_Name" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="Project_Status" ColumnName="Project_Status" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Task_Type">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.Task_Type">
+              <MappingFragment StoreEntitySet="Task_Type">
+                <ScalarProperty Name="Task_Id" ColumnName="Task_Id" />
+                <ScalarProperty Name="Task_Type1" ColumnName="Task_Type" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Time_Period">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.Time_Period">
+              <MappingFragment StoreEntitySet="Time_Period">
+                <ScalarProperty Name="Period_Id" ColumnName="Period_Id" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeSheets">
+            <EntityTypeMapping TypeName="TimeSheetManagementModel.TimeSheet">
+              <MappingFragment StoreEntitySet="TimeSheet">
+                <ScalarProperty Name="TimeSheet_Id" ColumnName="TimeSheet_Id" />
+                <ScalarProperty Name="Period_Id" ColumnName="Period_Id" />
+                <ScalarProperty Name="Working_Hours" ColumnName="Working_Hours" />
+                <ScalarProperty Name="OverTime" ColumnName="OverTime" />
+                <ScalarProperty Name="Leave_Id" ColumnName="Leave_Id" />
+                <ScalarProperty Name="created_Date" ColumnName="created_Date" />
+                <ScalarProperty Name="Last_Updated_Date" ColumnName="Last_Updated_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
