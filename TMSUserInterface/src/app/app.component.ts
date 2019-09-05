@@ -23,7 +23,8 @@ export class AppComponent {
 
   ngOnInit() {
     this._api.getGeoLocations()
-      .subscribe(data => this.geoLocationData = data);        
+      .subscribe(data => this.geoLocationData = data);    
+      console.log(this.geoLocationData);
   }
 
   geoLocationData : IGeoLocations[];

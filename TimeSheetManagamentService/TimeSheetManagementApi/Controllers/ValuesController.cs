@@ -6,9 +6,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TimeSheetManagementApi.Models;
+using System.Web.Http.Cors;
 
 namespace TimeSheetManagementApi.Controllers
 {
+    [EnableCors(origins: "http://localhost:11890/", headers: "*", methods: "*")]
     public class ValuesController : ApiController
     {
         //// GET api/values
