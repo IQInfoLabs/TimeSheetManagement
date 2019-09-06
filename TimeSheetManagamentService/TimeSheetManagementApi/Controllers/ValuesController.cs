@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace TimeSheetManagementApi.Controllers
 {
-    [EnableCors(origins: "http://localhost:11890/", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "GET, POST, PUT, DELETE, OPTIONS")]
     public class ValuesController : ApiController
     {
         //// GET api/values

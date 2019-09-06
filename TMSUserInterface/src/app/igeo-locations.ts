@@ -1,6 +1,6 @@
 export class IGeoLocations {
-    geo_id: number;
-    continent: string;
-    state:string;
-    country:string;
+    Geo_Id: number;
+    Continent: string;
+    State:string;
+    Country:string;
 }

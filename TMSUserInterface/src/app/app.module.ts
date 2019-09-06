@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModulesModule } from './material-modules.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ApiserviceService } from './apiservice.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModulesModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ApiserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

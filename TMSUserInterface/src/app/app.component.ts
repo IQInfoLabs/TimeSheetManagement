@@ -21,13 +21,18 @@ export class AppComponent {
 
   }
 
+  public geoLocationData : IGeoLocations[];
+  public geoData =[];
+  
+
   ngOnInit() {
     this._api.getGeoLocations()
-      .subscribe(data => this.geoLocationData = data);    
-      console.log(this.geoLocationData);
+      .subscribe((data) => {this.geoLocationData = data;
+        console.log(JSON.stringify(this.geoLocationData));
+        console.log(this.geoLocationData)});   
   }
 
-  geoLocationData : IGeoLocations[];
+  
 
   title = 'TMSUserInterface';
 
